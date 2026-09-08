@@ -52,7 +52,10 @@
           <dd>Usually within a few days</dd>
         </dl>
       </div>
-      <form class="contact-form" onsubmit="event.preventDefault(); alert('This is a static preview — connect a form service to receive messages.');">
+      <form class="contact-form" id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="access_key" value="08ebda1c-1b16-454a-a5c3-e8edc74c86ce">
+        <input type="hidden" name="subject" value="New message from Kautilya's Timeless Principles site">
+        <input type="text" name="botcheck" style="display:none;" tabindex="-1" autocomplete="off">
         <div class="field">
           <label for="name">Name</label>
           <input type="text" id="name" name="name" required>
@@ -65,7 +68,8 @@
           <label for="message">Message</label>
           <textarea id="message" name="message" required></textarea>
         </div>
-        <button class="cta rubric" type="submit" style="align-self:flex-start;">Send message</button>
+        <button class="cta rubric" type="submit" id="contactSubmit" style="align-self:flex-start;">Send message</button>
+        <p id="contactStatus" style="font-family:'IBM Plex Sans',sans-serif;font-size:0.9rem;margin:0;display:none;"></p>
       </form>
     </div>
   </div>
@@ -81,9 +85,44 @@
       <a href="contact.html">Contact</a>
     </div>
   </div>
-  <div class="foot-bottom">© 2026 A Doctrinal Reconstruction of the Kautilya's Arthashastra. A doctrinal reconstruction of the Arthashastra.</div>
+  <div class="foot-bottom">© 2026 A doctrinal reconstruction of the Arthashastra.</div>
 </footer>
 
 <script src="script.js"></script>
+<script>
+  const contactForm = document.getElementById('contactForm');
+  const contactStatus = document.getElementById('contactStatus');
+  const contactSubmit = document.getElementById('contactSubmit');
+  if (contactForm) {
+    contactForm.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      contactSubmit.disabled = true;
+      contactSubmit.textContent = 'Sending…';
+      contactStatus.style.display = 'none';
+      try {
+        const res = await fetch(contactForm.action, {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: new FormData(contactForm)
+        });
+        const data = await res.json();
+        if (data.success) {
+          contactStatus.textContent = "Thank you — your message has been sent. We'll get back to you soon.";
+          contactStatus.style.color = '#3a5f3a';
+          contactForm.reset();
+        } else {
+          throw new Error(data.message || 'Submission failed');
+        }
+      } catch (err) {
+        contactStatus.textContent = "Something went wrong sending your message. Please try again or email us directly.";
+        contactStatus.style.color = 'var(--rubric)';
+      } finally {
+        contactStatus.style.display = 'block';
+        contactSubmit.disabled = false;
+        contactSubmit.textContent = 'Send message';
+      }
+    });
+  }
+</script>
 </body>
 </html>
