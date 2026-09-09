@@ -313,6 +313,10 @@ footer{background:var(--ink);color:#a89a71;padding:56px 28px 40px;}
 
 a:focus-visible, button:focus-visible{outline:2px solid var(--rubric);outline-offset:3px;}
 
+.no-copy{
+  user-select:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;
+}
+
 /* ---------- Responsive ---------- */
 @media (max-width:860px){
   .matters-grid{grid-template-columns:1fr;gap:0;}
