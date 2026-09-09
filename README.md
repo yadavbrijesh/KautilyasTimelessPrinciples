@@ -1,1 +1,1 @@
-# KautilyasTimelessPrinciples
+# Acharya KautilyasTimelessPrinciples
