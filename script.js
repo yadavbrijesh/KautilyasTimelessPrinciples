@@ -33,6 +33,8 @@ const TIMELESS_PRINCIPLES = [
   { num: '08', title: 'Justice creates loyalty.', body: 'People obey authority. They remain loyal to justice. A ruler who governs with justice earns something that force alone could never secure — the willing support of the people.', href: 'principle-08.html' },
   { num: '09', title: 'A leader must first govern himself.', body: 'Before a ruler could govern a kingdom, command an army or administer justice, Acharya Kautilya believed he must first learn to govern himself.', href: 'principle-09.html' },
   { num: '10', title: 'Power must always serve purpose.', body: 'Power was never meant for personal glory. It existed to protect the state, preserve order and promote the prosperity of the people.', href: 'principle-10.html' },
+  { num: '11', title: 'Trust Is Earned Through Consistency.', body: 'People trust what is consistently fair, not occasionally impressive.Trust is one of the most valuable assets any leader or institution can possess. Yet it ', href: 'principle-11.html' },
+  { num: '12', title: 'The Welfare of the People Is the Purpose of the State.', body: 'The ruler exists for the welfare of the people. Power is often mistaken for the purpose of government. Kautilya saw it differently. He believed that the state does not exist to serve the ruler. ', href: 'principle-12.html' },
 ];
 
 // Populate the homepage's "Latest Timeless Principle" section, if present on this page.
