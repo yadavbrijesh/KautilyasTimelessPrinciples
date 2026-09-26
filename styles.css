@@ -75,6 +75,7 @@ nav.links{display:flex;gap:30px;font-family:'IBM Plex Sans',sans-serif;font-size
 nav.links a{
   text-decoration:none;color:var(--charcoal);
   position:relative;padding-bottom:3px;
+  white-space:nowrap;
 }
 nav.links a::after{
   content:"";position:absolute;left:0;right:0;bottom:0;height:1px;
